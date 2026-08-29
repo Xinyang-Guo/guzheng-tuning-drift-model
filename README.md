@@ -1,7 +1,4 @@
-# Git Test
-
-# This is my first GitHub repository.
-
-# I am learning Git workflow.
+# GuzhengPitch: Modeling and Predicting Temperature- and Humidity-Driven Tuning Drift
 
 print("hello, wold!")
+^ ^
