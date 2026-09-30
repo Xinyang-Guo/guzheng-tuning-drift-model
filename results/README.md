@@ -8,5 +8,7 @@
 - `browser_verification.json`: browser parity and interface checks for this export.
 
 The two evaluation schemes use different test sets; their scores are not directly
-comparable. Row-level observations and predictions are excluded. Units and limitations
-are described in the root README and the website's About page.
+comparable. These result CSVs omit row-level observations and predictions. The repository
+currently tracks the original Excel workbook at its root, so publishing this
+repository would also publish those records. Units and limitations are described
+in the root README and the website's About page.

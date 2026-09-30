@@ -1,8 +1,49 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About Tingxian · 听弦研究手记</title><style>
-*{box-sizing:border-box}body{margin:0;background:#344f42;color:#3d4b39;font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:950px;margin:35px auto;padding:32px;background:#faf0d2;border:4px solid #a58e5f;box-shadow:7px 7px #213b30}h1,h2{font-family:"Songti SC",Georgia,serif;line-height:1.4}h1{font-size:38px}h2{font-size:24px;margin-top:36px;color:#506d4a}a{color:#476c49;text-underline-offset:4px}.eyebrow{font:12px monospace;letter-spacing:3px;color:#8e7751}nav{display:flex;justify-content:space-between;gap:15px}.button{display:inline-block;padding:9px 16px;background:#4b6b48;color:#fff0c9;border:2px solid #2d4832;box-shadow:3px 3px #c2b582;text-decoration:none;margin-bottom:20px}.muted{color:#818369;font-size:14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px;text-align:left;border-bottom:1px solid #d1c18f}th{background:#e5e6bd}.note{background:#e7e8c6;border-left:4px solid #8f9e6d;padding:15px}img{width:100%;border:2px solid #b5a076}section{border-top:1px dashed #cdbc89;margin-top:30px;padding-top:10px}@media(max-width:650px){main{margin:15px;padding:22px 18px}h1{font-size:29px}body{font-size:14px}}
-</style></head><body><main><nav><a href="./index.html">← 听弦 / Interactive demo</a><a href="#chinese">中文介绍 ↓</a></nav><p class="eyebrow">TINGXIAN · MUSIC × ENVIRONMENT × MACHINE LEARNING</p><h1>What can the weather tell us about a guzheng’s pitch drift?</h1><p>Tingxian is an experimental exploration of the relationship between environmental conditions and pitch deviation across the 21 strings of a guzheng. It brings model comparison and a playable, pixel-art-inspired interface into one project.</p><a class="button" href="./index.html">Try the 21-string explorer →</a><p class="muted">No account is needed. Both models run in your browser; entered conditions are not sent to a prediction server. Weather is entered manually, not fetched automatically.</p>
-<h2>From an observation to a testable model</h2><p>The project links tuning-session records with environmental measurements, compares linear regression, ridge regression, decision trees and random forests, and examines the effect of removing instrument identity. After clarifying that the intended use is future tuning, evaluation changes from a random session split to chronological validation.</p><p>The deployed models use five features: relative humidity, humidity change, temperature, temperature change, and string number. The interface collects four environmental values and supplies each string number automatically.</p>
-<h2>Chronological evaluation</h2><p>The cleaned dataset contains 1,344 string-level records from 64 tuning sessions. Earlier dates supply 945 development records; the final dates, August 20–25, supply 399 holdout records. Four expanding-window validation folds compare 39 candidates (156 fold fits). Same-day records remain together.</p><div class="table-wrap"><table><thead><tr><th>Model</th><th>Holdout MAE</th><th>Holdout MSE</th><th>Holdout R²</th></tr></thead><tbody><tr><td>Ridge, α ≈ 316.23</td><td>6.5324</td><td>74.5554</td><td>0.5960</td></tr><tr><td>Random forest</td><td>10.0396</td><td>179.5212</td><td>0.0273</td></tr><tr><td>Training-mean baseline</td><td>10.7603</td><td>209.0188</td><td>−0.1325</td></tr></tbody></table></div><p>Ridge was selected using development-period validation, before inspecting the final holdout score. The app offers both trained model types for comparison. The displayed models were subsequently refit on all available history; the table reports the earlier holdout evaluation, not a new evaluation of these refitted models.</p>
-<h2>What the evidence does—and does not—show</h2><div class="note">These are retrospective results using measured environmental conditions. They do not establish accuracy when using future weather forecasts or indoor-environment estimates.</div><ul><li>Model errors vary substantially between time folds; more future sessions are needed.</li><li>The source dates contain month and day but no year. They are interpreted as one year's chronology.</li><li>The same historical records had already been explored in earlier experiments; the holdout is not an untouched external dataset.</li><li>Outdoor weather forecasts do not directly describe indoor instrument conditions. This is a conditional prediction tool, not an automatic forecasting service.</li><li>The source does not explicitly establish the deviation unit or sign convention. The app therefore uses the original data units and does not prescribe physical tuning adjustments.</li></ul>
-<h2>Implementation and contribution transparency</h2><p>Python and scikit-learn support preprocessing, training and evaluation. The public app uses exported numerical model parameters and JavaScript inference. AI tools assisted with code, interface development, testing and documentation. This project page does not claim that every implementation step was completed unaided.</p><p>The public release includes trained inference parameters and aggregate results. Raw experimental spreadsheets and row-level records are withheld by default. Public model parameters remain inspectable by visitors.</p>
-<section id="chinese" lang="zh-CN"><p class="eyebrow">听弦小筑 · 研究手记</p><h2>用环境变化，理解二十一弦的跑音</h2><p>听弦将古筝调音记录与温湿度信息关联，比较多种回归模型，并把结果做成可交互的像素风网页。项目从随机划分实验，进一步转向更符合“未来调音”用途的时间顺序验证。</p><p>当前网页支持五变量随机森林与岭回归：输入湿度、湿度变化、温度、温度变化，模型依次预测 1～21 弦，不使用古筝编号。预测全部在浏览器内完成，无需本地 Python 服务。</p><p>在现有时间验证中，岭回归的留出 MAE 为 6.5324，R² 为 0.5960，优于本次搜索中的随机森林。这不是“59.6% 的准确率”，也不能直接与旧随机划分下的成绩比较。</p><p>这些成绩使用实测环境。实际用途依赖天气预报或环境估计，仍需收集预测发出时的环境估计及后续调音结果，进行真正的前瞻验证。页面不自动获取天气，也不直接给出拧弦操作量。</p><p>代码、页面、测试和文档整理使用了 AI 辅助；申请展示时应如实说明自己的研究设计、采集、分析与工具使用情况。公开版默认不含原始 Excel 和逐条实验记录。</p><a class="button" href="./index.html">进入听弦 · 开始预测 →</a></section></main></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>关于听弦小筑 · 古筝跑音预测</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#344f42;color:#3d4b39;font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:950px;margin:35px auto;padding:32px;background:#faf0d2;border:4px solid #a58e5f;box-shadow:7px 7px #213b30}h1,h2{font-family:"Songti SC",Georgia,serif;line-height:1.4}h1{font-size:38px}h2{font-size:24px;margin-top:36px;color:#506d4a}a{color:#476c49;text-underline-offset:4px}.eyebrow{font:12px monospace;letter-spacing:3px;color:#8e7751}nav{display:flex;justify-content:space-between;gap:15px}.button{display:inline-block;padding:9px 16px;background:#4b6b48;color:#fff0c9;border:2px solid #2d4832;box-shadow:3px 3px #c2b582;text-decoration:none;margin-bottom:20px}.muted{color:#818369;font-size:14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px;text-align:left;border-bottom:1px solid #d1c18f}th{background:#e5e6bd}.note{background:#e7e8c6;border-left:4px solid #8f9e6d;padding:15px}img{width:100%;border:2px solid #b5a076}section{border-top:1px dashed #cdbc89;margin-top:30px;padding-top:10px}@media(max-width:650px){main{margin:15px;padding:22px 18px}h1{font-size:29px}body{font-size:14px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav><a href="./index.html">← 返回预测网页</a><a href="#english">English ↓</a></nav>
+  <p class="eyebrow">听弦小筑 · 古筝调音实验</p>
+  <h1>调音前，先看看 21 根弦可能怎么跑音</h1>
+  <p>听弦小筑把已有的古筝调音记录做成了一个可以动手试的网页。填入古筝所在环境的温度、湿度，以及它们的变化量，就能看到每根弦的预测偏差。网页里可以切换岭回归和随机森林，比较两种模型的结果。</p>
+  <a class="button" href="./index.html">打开预测网页 →</a>
+  <p class="muted">不用登录。网页不会自动获取天气；输入和预测都在浏览器里完成。</p>
+
+  <h2>数据是怎么用的</h2>
+  <p>整理后的数据有 64 次调音、1,344 条弦记录。前期比较了线性回归、岭回归、决策树和随机森林，也试过去掉古筝编号。现在网页里的两个模型都只用五个变量：湿度、湿度变化、温度、温度变化和弦编号。使用者填前四项，网页自动给 1～21 弦依次计算。</p>
+  <p>这个项目想预测下一次调音，所以模型比较改成了按日期向后验证。较早的 945 条记录用于训练和选模型；最后日期（8 月 20～25 日）的 399 条记录留作检验。选模型时，在早期数据上做了四轮滚动验证，共比较 39 组候选配置。</p>
+
+  <h2>为什么现在更看好岭回归</h2>
+  <p>岭回归是根据早期数据的验证结果选出的，最后那批记录没有参与选模型。下面是用最后一批记录得到的成绩；MAE 和 MSE 越低越好，R² 越高越好，R² 不是“准确率”。</p>
+  <div class="table-wrap"><table><thead><tr><th>模型</th><th>MAE</th><th>MSE</th><th>R²</th></tr></thead><tbody>
+    <tr><td>岭回归（α ≈ 316.23）</td><td>6.5324</td><td>74.5554</td><td>0.5960</td></tr>
+    <tr><td>随机森林</td><td>10.0396</td><td>179.5212</td><td>0.0273</td></tr>
+    <tr><td>训练集均值</td><td>10.7603</td><td>209.0188</td><td>−0.1325</td></tr>
+  </tbody></table></div>
+  <p>因此，按目前的时间验证结果，岭回归更值得优先参考；网页仍可切换两种模型。网页展示的两个模型后来又用全部历史数据重新训练；表中的数字是重新训练前的留出检验结果。</p>
+
+  <h2>拿天气预报来用时</h2>
+  <div class="note">上面的成绩用的是当时实际测到的环境数据。若用天气预报或提前估计的数值输入，效果还没有经过实际验证。</div>
+  <p>室外天气预报只能作参考，真正要估计的是古筝所在位置的室内温湿度。原始数据也没有明确写出偏差的单位和正负号分别代表什么，所以网页沿用原始数值，不把预测值解释成具体的拧弦幅度或方向。</p>
+  <p class="muted">原始日期只有月、日，验证时暂按同一年排列。这批记录也曾用于前期探索，最后的留出结果还不能代替用新数据做的验证。</p>
+
+  <h2>代码与资料</h2>
+  <p>模型用 Python 和 scikit-learn 训练，再导出到网页中运行。开发过程中使用了 AI 辅助整理代码、页面和文字。仓库里保留了原始 Excel；仓库公开后，这份文件也会随之公开。</p>
+
+  <section id="english" lang="en">
+    <p class="eyebrow">TINGXIAN · ENGLISH SUMMARY</p>
+    <h2>About this project</h2>
+    <p>Tingxian estimates pitch drift for each of a guzheng's 21 strings from temperature and humidity inputs. Visitors can compare ridge regression with a random forest. In a date-ordered holdout using measured conditions, ridge regression reached an MAE of 6.5324 in the source data's unspecified units. Performance with weather forecasts or indoor estimates has not yet been tested.</p>
+    <a class="button" href="./index.html">Try the predictor →</a>
+  </section>
+</main>
+</body>
+</html>

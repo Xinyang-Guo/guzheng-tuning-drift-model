@@ -1,7 +1,7 @@
 # Export and verification
 
 The committed `docs/assets/models.json` is ready to use. These maintenance scripts
-require the private research environment and trusted local model artifacts.
+require the research dependencies and trusted local model artifacts.
 
 1. Install `requirements-dev.txt` and run `python -m playwright install chromium`.
 2. With an authorized workbook in `data/`, run `python src/guzheng_future_validation.py`

@@ -1,6 +1,6 @@
 # 听弦 · 双模型古筝跑音预测网页
 
-首次运行 Python 版本需要先安装 `requirements.txt`，将授权原始工作簿放入 `data/古筝调音数据.xlsx`，然后运行 `python src/guzheng_future_validation.py` 生成所需的时间验证指标。公开文件包不含原始工作簿；无需原始数据的演示请使用 `docs/` 静态网页。
+首次运行 Python 版本需要先安装 `requirements.txt`，将有权使用的原始工作簿放到 `data/古筝调音数据.xlsx`，再运行 `python src/guzheng_future_validation.py` 生成时间验证指标。仓库根目录目前也有一份原始工作簿；研究脚本读取的是 `data/` 下的文件。只想体验预测，可以直接用 `docs/` 静态网页。
 
 准备好以上文件后，在项目根目录运行：
 
