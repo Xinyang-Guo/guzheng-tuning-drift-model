@@ -1,0 +1,19 @@
+{
+  "cases_per_model": 96,
+  "strings_per_case": 21,
+  "max_absolute_error": {
+    "random_forest": 1.4210854715202004e-14,
+    "ridge": 1.4210854715202004e-14
+  },
+  "checked": [
+    "sklearn parity",
+    "float32 tree thresholds",
+    "21 strings",
+    "input validation",
+    "offline inference",
+    "model switching",
+    "CSV labels",
+    "mobile layout",
+    "no API requests"
+  ]
+}

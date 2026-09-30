@@ -1,0 +1,19 @@
+model,stage,run,feature_count,parameters,train_r2,test_r2,test_mse
+random_forest,parameter_comparison,run_1,6,"n_estimators=100, max_depth=5",0.7968374971491823,0.4729793758257751,68.01953742809809
+random_forest,parameter_comparison,run_2,6,"n_estimators=300, max_depth=7",0.8778653190401153,0.4716886039133249,68.18612997568124
+random_forest,initial_comparison,initial,6,"n_estimators=500, max_depth=7, random_state=42",0.8777932758138846,0.4675107941712834,68.72533598220427
+random_forest,without_guzheng_id,run_1,5,"n_estimators=100, max_depth=5",0.7716535409965022,0.4673827163716139,68.74186625120842
+random_forest,parameter_comparison,run_3,6,"n_estimators=500, max_depth=9",0.9224463247979843,0.46005759667727875,69.6872775508038
+random_forest,without_guzheng_id,original_config,5,"n_estimators=500, max_depth=7, random_state=42",0.8369848165736928,0.45721192035927727,70.05455271602878
+random_forest,without_guzheng_id,run_2,5,"n_estimators=300, max_depth=7",0.8367674376242902,0.4570286601224036,70.07820506656182
+ridge,without_guzheng_id,run_3,5,alpha=10.0,0.5419645323441971,0.4505088044764518,70.91968554150621
+ridge,without_guzheng_id,run_2,5,alpha=1.0,0.542018063087876,0.4484566093596192,71.18455062677279
+ridge,parameter_comparison,run_3,6,alpha=10.0,0.5472771668807197,0.4484491199164574,71.18551724636241
+ridge,without_guzheng_id,run_1,5,alpha=0.1,0.5420186194954613,0.4482351346789878,71.21313509697676
+ridge,without_guzheng_id,original_config,5,"RidgeCV: 50 alphas from 0.001 to 1000, cv=5; selected alpha not recorded",0.5420186251376364,0.4482105831699158,71.21630381981916
+ridge,parameter_comparison,run_2,6,alpha=1.0,0.5473232749160823,0.447543233334151,71.30243484591051
+ridge,parameter_comparison,run_1,6,alpha=0.1,0.5473237497646334,0.4474440087251772,71.3152411986305
+ridge,initial_comparison,initial,6,"RidgeCV: 50 alphas from 0.001 to 1000, cv=5; selected alpha not recorded",0.5473237545750155,0.4474329947420477,71.31666271043355
+linear,initial_comparison,initial,6,LinearRegression defaults,0.5473237545754968,0.44743288338895615,71.31667708214015
+random_forest,without_guzheng_id,run_3,5,"n_estimators=500, max_depth=9",0.8725635117338103,0.4423869974541852,71.96792071750232
+decision_tree,initial_comparison,initial,6,"max_depth=5, random_state=42",0.7531772648223809,0.4349207452610552,72.93154718144567

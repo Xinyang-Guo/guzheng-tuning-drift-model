@@ -1,5 +1,9 @@
 # 古筝调音预测：实验记录与结果
 
+**网页版：[听弦小筑 · 21 弦跑音预测](https://xinyang-guo.github.io/guzheng-tuning-drift-model/)**
+
+输入预计的温度、湿度及变化量，可选择岭回归或随机森林，查看 21 根弦的预测结果。网页源码见 [docs/index.html](docs/index.html)，按时间划分的模型指标见 [时间验证汇总](results/time_validation_metrics.csv)。部署方法见 [DEPLOY.md](DEPLOY.md)。仓库公开并在 GitHub Pages 中设置 `main` 分支的 `/docs` 目录后，网页版链接才会生效；具体网址以 Pages 设置页显示的地址为准。
+
 这个项目尝试用温度、湿度及其变化等信息预测古筝的音高偏差。我先比较了线性回归、岭回归、决策树和随机森林，随后调整参数，并检查去掉古筝编号后结果会有什么变化。最近把用途明确为预测未来调音，又补做了一轮按时间划分的验证。
 
 下面先放时间验证的结果，再保留之前的随机划分实验。两轮实验用了不同的测试集，需要分开看。
@@ -85,7 +89,7 @@ inputs.to_csv("output/future_predictions.csv", index=False, encoding="utf-8-sig"
 
 ## 数据与实验方法（历史随机划分）
 
-数据来自 [古筝调音数据.xlsx](data/古筝调音数据.xlsx)，读取其中的 `Environment` 和 `Pitch_Data` 工作表。
+数据来自 [古筝调音数据.xlsx](古筝调音数据.xlsx)，读取其中的 `Environment` 和 `Pitch_Data` 工作表。
 
 每 21 行音高记录作为一次调音 session，按日期、古筝编号和记录序号与环境数据关联。清理时去掉湿度中的星号，并删除湿度变化或温度变化缺失的记录。
 

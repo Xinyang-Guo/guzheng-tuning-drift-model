@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>听弦 · 双模型古筝预测</title>
+<style>
+:root{--ink:#39483a;--muted:#7a8067;--green:#426749;--paper:#efdfb6;--line:#c5b080;--gold:#a96340;--white:#fbf0d2;--shadow:#263f35;--wood:#6c6644;--sky:#c9d5ac;--sun:#f3d693}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}body{margin:0;color:var(--ink);background:#344f42;background-image:linear-gradient(90deg,#29443828 1px,transparent 1px),linear-gradient(#29443828 1px,transparent 1px);background-size:12px 12px;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;font-size:14px}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}button,a,input,summary{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #b5743d;outline-offset:5px}a{color:inherit}header{max-width:1280px;height:90px;margin:auto;display:flex;align-items:center;justify-content:space-between;color:#f3e1b4;padding:0 36px;gap:24px}.brand{display:flex;align-items:center;gap:14px}.logo{display:grid;place-items:center;background:#ba684a;color:#ffe6b3;width:38px;height:40px;border:2px solid #e4aa78;box-shadow:3px 3px #20372e;font:24px "Songti SC",serif}.brand strong{font:700 27px "Songti SC",serif;letter-spacing:4px}.brand small{font:10px monospace;color:#b1c1a0;letter-spacing:3px}.top-nav{display:flex;gap:28px;margin-left:auto;margin-right:24px;font:12px "Songti SC",serif;letter-spacing:2px}.top-nav a{text-decoration:none;color:#bfcab0}.top-nav a:hover{color:#f8d18a}.badge{font:11px monospace;border:1px solid #789375;padding:9px 12px;color:#d9e2bd;white-space:nowrap}.dot{display:inline-block;width:6px;height:6px;background:#bace81;margin-right:8px;box-shadow:0 0 0 2px #5b7754}main{max-width:1280px;margin:auto;padding:0 36px 24px}.hero{height:330px;position:relative;isolation:isolate;overflow:hidden;background:var(--sky);border:4px solid #213b30;box-shadow:0 0 0 1px #859373,5px 6px 0 #213a30;margin-bottom:26px}.hero-copy{position:relative;z-index:2;padding:39px 38px;max-width:520px;pointer-events:none}.eyebrow{font:10px monospace;letter-spacing:4px;color:#66785b}.eyebrow:before{content:"◆";font-size:9px;margin-right:10px;color:#996443}h1{font:700 43px "Songti SC",STSong,serif;letter-spacing:5px;line-height:1.4;margin:17px 0 12px;text-shadow:2px 2px #e8e8ba}.hero p{font:13px/2 "Songti SC",serif;color:#566c51;margin:0}.hero-tag{display:inline-flex;align-items:center;gap:9px;background:#f5eccbcb;border:1px solid #99a276;padding:7px 10px;margin-top:22px;font:10px monospace;letter-spacing:1px}.hero-tag:before{content:"";width:5px;height:5px;background:#648358}.scene{position:absolute;inset:0;z-index:-1}.scene svg{display:block;width:100%;height:100%;image-rendering:pixelated}.scene-control{position:absolute;right:18px;top:18px;z-index:3;display:flex;background:#284735c9;border:2px solid #46604a;padding:3px;gap:3px}.scene-control button{font-size:10px;border:0;background:none;padding:7px 11px;color:#d6dfbe}.scene-control button.active{background:#ecdfb3;color:#526447;box-shadow:2px 2px #203b30}.location{position:absolute;bottom:12px;left:16px;display:flex;align-items:center;gap:8px;color:#eef1c8;background:#2f4e3aba;padding:5px 8px;font:9px monospace;letter-spacing:2px}.location:before{content:"+";color:#e8c17b}.journey{display:flex;align-items:center;justify-content:space-between;color:#c2cdb0;padding:0 2px 21px;font-size:11px}.journey b{color:#f0d99f;font-family:"Songti SC",serif;font-size:16px;font-weight:500;letter-spacing:2px}.journey .progress{display:flex;align-items:center;gap:9px;font-size:10px}.progress i{font-style:normal;background:#56704e;width:19px;height:19px;display:grid;place-items:center;color:#eee2b2}.progress em{font-style:normal;color:#8fa383;font-size:9px;padding:0 8px}.layout{display:grid;grid-template-columns:306px minmax(0,1fr);gap:24px;align-items:start}.card{position:relative;background:var(--white);border:3px solid #746747;box-shadow:inset 0 0 0 3px #fff7db,4px 4px 0 #213b30}.card:before,.card:after{content:"";position:absolute;width:5px;height:5px;background:#ac8650;top:6px;left:6px;box-shadow:0 1px #e5c992}.card:after{left:auto;right:6px}.settings{padding:23px 20px}.section-top{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #ddc995;padding-bottom:15px;margin-bottom:20px}h2{font:700 19px "Songti SC",serif;letter-spacing:1px;margin:0}.step{font:10px monospace;color:#aa8353}.tabs{display:flex;border:2px solid #bca579;background:#e0d2aa;padding:3px;gap:3px;margin-bottom:11px}.tabs button{border:0;background:none;flex:1;padding:10px 2px;color:#696d50;font-size:11px}.tabs button.active{background:#4b6c4a;color:#fff0c4;box-shadow:2px 2px #314c35}.tabs button:hover:not(.active){background:#ece3be}.hint{font-size:11px;line-height:1.9;color:#74785e;margin:0 0 17px}.group-label{font:11px "Songti SC",serif;font-weight:700;letter-spacing:2px;color:#9b683e;margin:22px 0 13px}.group-label:before{content:"▪";padding-right:7px}.field{margin-bottom:16px}.field label{display:block;font-size:12px;margin-bottom:8px;color:#556149}.input-wrap{display:flex;align-items:center;padding-right:10px;border:2px solid #b8a77a;background:#f5e9c4;box-shadow:inset 2px 2px #e1d4ab}.input-wrap:focus-within{outline:2px solid #5e8351;outline-offset:2px;background:#fff4d5}.input-wrap input{min-width:0;width:100%;border:0;outline:0;background:none;padding:11px 12px;font:700 24px "Courier New",monospace;color:#456046}.input-wrap input::placeholder{color:#b8ae89;font-weight:400}.unit{font-size:11px;color:#818061;white-space:nowrap}.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair .input-wrap input{font-size:19px;padding:12px 8px}.field small{display:block;font-size:10px;line-height:1.7;color:#878165;margin-top:6px}.primary{display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 13px;margin-top:8px;background:#4e704c;color:#fff0c3;border:2px solid #304b33;box-shadow:inset 0 3px #819565,3px 4px #2c432f;letter-spacing:2px;transition:transform 90ms,box-shadow 90ms}.primary:hover:not(:disabled){background:#628058}.primary:active:not(:disabled){transform:translate(2px,3px);box-shadow:inset 0 3px #819565,1px 1px #2c432f}.primary span:last-child{font-family:monospace;font-size:13px}.text-button{display:block;border:0;background:none;color:#8e7955;font-size:11px;text-decoration:underline;text-underline-offset:4px;margin:18px auto 0}.note{margin-top:23px;background:#e4e6bd;border:1px solid #bcc397;border-left:4px solid #8f9c6e;padding:12px;color:#6d7954;font-size:11px;line-height:1.9}.note:before{content:"小笺 / ";color:#54734a;font-family:"Songti SC",serif;font-weight:700}.results{display:grid;gap:21px;min-width:0}.overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.stat{position:relative;min-width:0;background:#f3e4ba;border:2px solid #a18a58;box-shadow:3px 3px #233c30,inset 0 2px #fcf1ce;padding:18px 17px}.stat:first-child{background:#e3e6be;border-color:#94a378}.stat:after{content:"";width:6px;height:6px;position:absolute;right:9px;top:9px;background:#bba572;box-shadow:0 7px #e0d09f,7px 0 #e0d09f}.stat label{display:block;font-size:11px;color:#727b5e}.stat strong{display:block;font:700 29px/1.3 "Courier New","Songti SC",serif;margin:11px 0 5px;color:#4a6545;white-space:nowrap}.stat small{font-size:10px;color:#8a8061}.chart-card,.detail{padding:22px}.chart-header{display:flex;justify-content:space-between;align-items:center;gap:15px}.sub{font-size:11px;color:#858062;line-height:1.8;margin:7px 0}.legend{display:flex;align-items:center;font-size:10px;white-space:nowrap;color:#87835f}.legend i{display:inline-block;width:7px;height:7px;background:#5a7e57;margin:0 5px 0 12px}.legend i.negative{background:#b47a50}.chart{height:280px;margin-top:14px;background:#f5eac8;border:1px solid #d1c191;box-shadow:inset 2px 2px #e7dab3;padding:6px}.chart svg{width:100%;height:100%;overflow:visible;shape-rendering:crispEdges;font-family:monospace}.empty{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;background:repeating-linear-gradient(0deg,transparent,transparent 39px,#dccb9e70 39px,#dccb9e70 40px);color:#8b9470;font-size:12px}.empty span{display:block;width:112px;height:38px;background:#b78151;border:3px solid #815f3c;box-shadow:3px 3px #ccbc92;margin-bottom:25px;position:relative;color:transparent;transform:skewY(-5deg)}.empty span:before{content:"";position:absolute;inset:3px 7px;background:repeating-linear-gradient(0deg,transparent 0 3px,#efcc85 3px 4px)}.empty span:after{content:"";position:absolute;top:2px;bottom:2px;left:64px;border-left:3px solid #795a3b;transform:skew(-20deg)}.chart-footer{border-top:1px dashed #ccbb8b;padding-top:12px;margin-top:13px;display:flex;justify-content:space-between;gap:10px;font-size:10px;color:#827e5e}.warning{background:#eddfb6;border:1px solid #ccb27b;border-left:3px solid #a67b49;font-size:11px;line-height:1.9;color:#8b693c;padding:10px;margin-bottom:0}.download{border:2px solid #929c70;box-shadow:2px 2px #c5c697;background:#e1e7bc;color:#5a704a;padding:8px 11px;font-size:11px;white-space:nowrap}.download:hover:not(:disabled){background:#d1dbac}.string-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:17px}.string{position:relative;background:#f1e2b7;border:2px solid #c8b47d;box-shadow:inset 0 2px #fff2cb;padding:11px 3px 10px;text-align:center;transition:transform 100ms}.string:before{content:"";display:block;width:24px;height:9px;border-top:2px solid #ab9668;border-bottom:2px solid #ab9668;box-shadow:inset 0 2px #efdfb3,inset 0 3px #ab9668;margin:0 auto 8px;opacity:.65}.string:hover{transform:translateY(-2px);border-color:#929d6e;background:#f8eccc}.string .number{font:10px monospace;color:#8c7d51}.string .value{display:block;font:700 16px "Courier New",monospace;margin-top:7px}.string.peak{border-color:#879962;background:#e0e5b7}.string.peak:after{content:"◆";font-size:7px;color:#6f894c;position:absolute;right:3px;top:4px}details{border-top:1px dashed #d1bc89;margin-top:18px;padding-top:13px;font-size:11px;line-height:1.9;color:#80795c}summary{cursor:pointer;color:#677653}details p{padding:0 5px}.error{font-size:12px;line-height:1.8;color:#a44e39}.stale{color:#a26738}footer{max-width:1280px;margin:15px auto 0;padding:25px 36px 32px;display:flex;justify-content:space-between;gap:20px;color:#a7b496;font:10px/1.9 monospace;letter-spacing:1px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+body[data-scene="dusk"]{--sky:#858e94}body[data-scene="dusk"] .scene{filter:hue-rotate(12deg) saturate(.65) brightness(.83)}body[data-scene="dusk"] .hero-copy{color:#fff1cb}body[data-scene="dusk"] h1{text-shadow:2px 2px #737f73}body[data-scene="dusk"] .hero p,body[data-scene="dusk"] .eyebrow{color:#e2e4cf}body[data-scene="dusk"] .hero-tag{color:#526447}body[data-scene="dusk"] .sky-disc{fill:#f6edd0}.clouds{animation:cloud-drift 10s steps(8,end) infinite alternate}.lantern-light{animation:lantern-glow 3s steps(3,end) infinite alternate}@keyframes cloud-drift{to{transform:translateX(5px)}}@keyframes lantern-glow{to{opacity:.6}}
+@media(max-width:1080px){.top-nav{display:none}.hero-copy{padding:34px 27px}.hero{height:305px}h1{font-size:36px}.layout{grid-template-columns:280px minmax(0,1fr);gap:19px}.stat{padding:16px 10px}.stat strong{font-size:25px}.chart-card,.detail{padding:19px}.string-grid{gap:5px}.string .value{font-size:14px}.legend{display:none}}
+@media(max-width:760px){header{padding:0 20px;height:78px}.brand small{display:none}.brand strong{font-size:24px}.badge{font-size:9px;padding:8px}.logo{width:32px;height:35px;font-size:22px}.brand{gap:10px}main{padding:0 19px 20px}.hero{height:365px;margin-bottom:22px}.hero-copy{padding:28px 20px;max-width:100%}.eyebrow{font-size:9px;letter-spacing:2px}h1{font-size:30px;letter-spacing:3px;margin:13px 0 10px}.hero p{font-size:12px;line-height:1.9}.hero-tag{margin-top:13px;font-size:9px;padding:5px 7px}.scene svg{position:absolute;bottom:0;height:220px;width:850px;max-width:none;right:-23px}.scene-control{top:auto;bottom:13px;right:12px;padding:2px}.scene-control button{padding:6px 9px}.location{font-size:8px;letter-spacing:1px;left:10px;bottom:13px}.journey{padding-bottom:18px}.journey b{font-size:14px}.journey .progress{font-size:9px;gap:5px}.progress i{width:16px;height:16px}.progress em{padding:0 3px}.layout{grid-template-columns:1fr;gap:24px}.settings{padding:23px}.env-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.input-wrap input{font-size:23px;padding:12px 10px}.results{gap:21px}.overview{gap:8px}.stat{padding:15px 8px}.stat strong{font-size:22px}.stat label{font-size:10px}.stat small{font-size:9px;line-height:1.7;display:block}.stat:after{display:none}.chart-card,.detail{padding:20px 14px}.chart{height:252px}.chart-header{gap:10px}.chart-header h2{font-size:17px}.sub{font-size:10px}.chart-footer{flex-direction:column;line-height:1.7}.string-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.string .value{font-size:20px}.string{padding:13px 5px}.download{padding:8px;font-size:10px}footer{padding:15px 20px 25px;font-size:9px;letter-spacing:0}.hero-copy{pointer-events:none}.chart svg{overflow:hidden}}
+@media(max-width:370px){h1{font-size:24px;letter-spacing:1px}.badge{font-size:8px}.hero-copy{padding-left:15px}.journey .progress em{display:none}.stat strong{font-size:19px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.model-picker{border:0;margin:0 0 19px;padding:0}.model-picker legend{font:700 12px "Songti SC",serif;letter-spacing:2px;color:#756c48;margin-bottom:11px}.model-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.model-option{position:relative;min-width:0;border:2px solid #b8a77a;background:#efe1b8;color:#737454;box-shadow:inset 0 2px #fff2cf;text-align:left;padding:12px 10px;transition:background 90ms}.model-option strong{display:block;font-size:13px;letter-spacing:1px;font-weight:600;padding-right:7px}.model-option small{display:block;font-size:9px;margin-top:7px;line-height:1.5}.model-option.active{border-color:#667f52;background:#dce4b9;color:#426144;box-shadow:inset 0 2px #f0f1d1,2px 2px #adb684}.model-option.active:after{content:"◆";position:absolute;top:7px;right:6px;font-size:7px;color:#607b4c}.model-option:hover:not(:disabled){background:#e6eac8}.model-hint{font-size:10px;line-height:1.8;color:#7d7c5c;margin:11px 0 0}.input-separator{font:700 12px "Songti SC",serif;letter-spacing:2px;border-top:1px dashed #cdbc8d;padding-top:16px;margin-bottom:12px;color:#756c48}.model-evaluation{padding:10px;background:#eee5c4;border-left:3px solid #acb781}#model-notes a{color:#5a764d}
+</style></head>
+<body>
+<header><div class="brand"><div class="logo" aria-hidden="true">弦</div><strong>听弦</strong><small>山 间 琴 事</small></div><nav class="top-nav" aria-label="页面导航"><a href="#environment">观天候</a><a href="#results">听弦音</a><a href="#model-notes">阅手记</a></nav><div class="badge"><span class="dot"></span><span id="modelBadge">五变量 · 随机森林</span></div></header>
+<main><section class="hero"><div class="hero-copy"><div class="eyebrow">山居听弦 · 像素琴坊</div><h1>山居听弦，知冷暖。</h1><p>一窗山色，一案清音。<br>记下温湿变化，看看二十一弦的跑音趋势。</p><span class="hero-tag">双模型可选 · 二十一弦推演</span></div><div class="scene" aria-hidden="true"><svg viewBox="0 0 600 165" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+<rect width="600" height="165" fill="var(--sky)"/>
+<path fill="#becaa5" d="M240 105h16V88h13V75h12V60h12V50h12v13h12v13h14v16h20v-8h13V64h12V49h12V33h12v-9h13v17h11v17h14v16h15v18h18v73H240z"/>
+<path fill="#a6bb96" d="M334 125h15v-18h13V93h15V78h12V60h12v-9h12v16h13v18h17v16h17v12h15v-10h14V82h10V63h12V45h14v14h12v18h13v16h17v20h24v52H334z"/>
+<path fill="#829d7b" d="M433 137h13v-13h12v-13h12V95h11V81h12V70h11v15h10v18h15v16h18v11h23v-12h30v47H433z"/>
+<path class="sky-disc" fill="#efd59a" d="M490 18h14v4h5v14h-5v4h-14v-4h-4V22h4z"/>
+<g class="clouds" fill="#e9e9cb"><path d="M292 27h16v-4h14v4h20v4h-50zM426 16h13v-4h9v4h18v4h-40zM548 44h17v-5h15v5h20v4h-52z"/></g>
+<path fill="#8b9f73" d="M0 144h35v-4h38v6h40v-3h48v-7h39v8h44v-6h43v-7h42v8h39v-6h51v-7h40v6h54v-7h48v4h39v36H0z"/>
+<path fill="#678569" d="M0 153h72v-5h71v4h83v-4h72v-3h64v5h49v-5h78v-8h49v5h62v23H0z"/>
+<path fill="#a8bb9c" d="M125 155h138v-5h80v-4h74v-5h48v5h-35v5h-28v5h-47v5h-49v4H126z"/>
+<g fill="#d6dcc0"><path d="M227 156h38v1h-38zM314 152h20v1h-20zM347 159h43v1h-43zM397 150h18v1h-18z"/></g>
+<!-- 岸边小径 -->
+<path fill="#b7af7c" d="M400 135h104v4h-17v5h-38v6h-53v6h-48v9h-42v-5h24v-5h27v-6h27v-7h16z"/>
+<!-- 琴亭与木台 -->
+<path fill="#74613d" d="M389 126h115v8H389zM396 134h106v5H396zM411 90h5v37h-5zM479 90h5v37h-5z"/>
+<path fill="#536d4d" d="M395 90h-14v-4h17v-5h14v-5h14v-6h14v-6h7v-5h5v5h7v6h13v6h14v5h14v5h16v4H395z"/>
+<path fill="#293f36" d="M381 90h135v4H381zM397 85h102v2H397zM412 79h72v2h-72zM427 73h43v2h-43zM441 67h16v2h-16z"/>
+<path fill="#84936b" d="M404 83h14v-5h14v-5h12v-6h7v6h11v5h14v5h15v2h-87z"/>
+<path fill="#bdad70" d="M405 95h85v3h-85zM391 123h116v3H391zM387 132h122v3H387z"/>
+<!-- 灯笼 -->
+<path fill="#5d5739" d="M420 95h1v8h-1zM474 95h1v8h-1z"/>
+<path fill="#af6242" d="M417 102h7v2h2v9h-2v2h-7v-2h-2v-9h2zM471 102h7v2h2v9h-2v2h-7v-2h-2v-9h2z"/>
+<path class="lantern-light" fill="#eac178" d="M419 104h3v9h-3zM473 104h3v9h-3zM420 116h1v5h-1zM474 116h1v5h-1z"/>
+<!-- 新版琴师：青衫、花簪、半挽长发；独立 SVG 像素层 -->
+<g id="qinshi-sprite">
+<!-- 脑后乌发与低垂发尾 -->
+<path fill="#35433e" d="M442 97h10v2h3v5h1v13h-3v6h-4v-7h-8v5h-3v-13h1v-8h3z"/>
+<path fill="#4a5750" d="M440 105h2v10h-2zM452 103h2v13h-2z"/>
+<!-- 半挽发髻 -->
+<path fill="#2c3937" d="M443 94h6v1h2v4h-11v-3h3z"/>
+<path fill="#657067" d="M443 95h4v1h-4zM441 97h3v1h-3z"/>
+<!-- 颈部与下颌 -->
+<path fill="#d5a987" d="M445 108h4v5h-4z"/>
+<!-- 小脸与侧耳 -->
+<path fill="#d6ac8b" d="M441 103h13v4h-2v3h-9v-3h-2z"/>
+<path fill="#f2d5b0" d="M443 100h8v2h2v5h-2v2h-7v-2h-2v-5h1z"/>
+<path fill="#fae2bf" d="M444 102h6v5h-6z"/>
+<!-- 不对称鬓发、眉眼与胭脂 -->
+<path fill="#35433e" d="M442 99h10v2h-3v1h-3v1h-3v3h-1zM451 101h2v5h-1v-2h-1z"/>
+<path fill="#536156" d="M443 99h4v1h-4z"/>
+<path fill="#45483d" d="M444 104h2v1h-2zM449 104h2v1h-2z"/>
+<path fill="#d79481" d="M443 106h2v1h-2zM450 106h2v1h-2z"/>
+<path fill="#bb8372" d="M447 108h2v1h-2z"/>
+<!-- 发簪与小花；垂坠玉珠 -->
+<path fill="#d8b572" d="M451 98h7v1h-7zM455 99h1v6h-1z"/>
+<path fill="#efe2bc" d="M452 96h2v1h2v2h-2v2h-2v-2h-2v-2h2z"/>
+<path fill="#bc7861" d="M452 97h2v2h-2z"/>
+<path fill="#b7caba" d="M455 104h2v2h-2z"/>
+<!-- 交领青衫与坐姿裙摆 -->
+<path fill="#647e70" d="M441 111h4v1h5v-1h4v2h3v8h3v7h-25v-7h3v-8h3z"/>
+<path fill="#a3b8a0" d="M440 113h5l3 4 4-4h3v9h2v4h-20v-5h2z"/>
+<path fill="#cdd5b7" d="M438 121h4v5h-6v-2h2zM450 121h5v6h-5z"/>
+<path fill="#829e88" d="M443 119h3v8h-3zM453 119h2v7h-2z"/>
+<!-- 米白交领：两道阶梯像素 -->
+<path fill="#f2e7c8" d="M442 111h3v2h2v2h2v2h-2v-1h-2v-2h-2v-1h-1zM449 111h3v2h-2v2h-2v-2h1z"/>
+<path fill="#566f61" d="M446 117h6v2h-6z"/>
+<!-- 向两侧舒展的宽袖 -->
+<path fill="#718c79" d="M438 113h4v3h-3v3h-7v-3h3v-2h3zM453 113h3v2h3v1h3v3h-7v-2h-2z"/>
+<path fill="#c2d0b2" d="M436 115h4v2h-3v2h-5v-2h4zM454 115h3v2h5v2h-6v-2h-2z"/>
+</g>
+<!-- 古筝 -->
+<path fill="#614e35" d="M426 120h43v5h-43zM429 125h3v6h-3zM463 125h3v6h-3z"/>
+<path fill="#b2824e" d="M424 116h42v2h7v4h-50v-4h1z"/>
+<path fill="#efd49a" d="M427 118h41v1h-41zM426 120h43v1h-43z"/>
+<path fill="#795d3a" d="M451 117h2v5h-2zM441 117h2v5h-2z"/>
+<!-- 袖口与拨弦的双手 -->
+<path fill="#f4e4c2" d="M432 116h4v3h-4zM458 116h4v3h-4z"/>
+<path fill="#ebc8a2" d="M434 117h5v1h2v1h-7zM455 117h5v2h-5z"/>
+<path fill="#b38c70" d="M438 119h3v1h-3zM454 119h3v1h-3z"/>
+<!-- 前景松树 -->
+<path fill="#716344" d="M563 85h7v78h-7zM554 127h10v4h-10zM569 107h11v4h-11z"/>
+<path fill="#365747" d="M548 87h13v-7h14v7h13v6h11v6h-61v-6h10zM538 108h18v-7h22v7h14v6h8v8h-70v-7h8zM529 132h18v-9h33v8h13v7h7v9h-80v-8h9z"/>
+<path fill="#658160" d="M551 90h22v3h-22zM541 112h27v3h-27zM531 137h29v3h-29z"/>
+<!-- 左侧竹林 -->
+<g fill="#537554"><path d="M18 123h3v42h-3zM29 132h3v33h-3zM8 136h3v29H8zM13 129h6v3h-6zM21 139h8v3h-8zM25 145h6v3h-6zM2 140h8v3H2z"/></g>
+<!-- 白鹭 -->
+<path fill="#f0ebcc" d="M316 142h9v3h-9zM323 137h3v8h-3zM324 135h4v3h-4zM313 141h4v5h-4z"/><path fill="#8a7045" d="M328 136h5v1h-5zM316 146h1v6h-1zM322 146h1v6h-1z"/>
+<!-- 落花与草地像素 -->
+<g fill="#a8b481"><path d="M370 137h2v5h-2zM367 140h8v2h-8zM515 146h2v5h-2zM512 149h8v2h-8zM102 154h2v6h-2zM99 157h8v2h-8z"/></g>
+<g fill="#dbb785"><path d="M367 137h3v3h-3zM515 145h3v3h-3zM90 150h2v2h-2zM526 155h3v2h-3z"/></g>
+</svg></div><div class="scene-control" role="group" aria-label="庭院景色，仅改变外观"><button type="button" class="active" data-scene="morning" aria-pressed="true">朝露</button><button type="button" data-scene="dusk" aria-pressed="false">暮色</button></div><span class="location">听弦小筑·山水之间</span></section>
+<div class="journey"><b>今日 · 调弦手记</b><div class="progress"><i>1</i> 观天候 <em>···</em><i>2</i> 听弦音 <em>···</em><i>3</i> 记弦谱</div></div><div class="layout"><aside class="card settings" id="environment"><div class="section-top"><h2>设定环境</h2><span class="step">卷一 · 观天</span></div>
+<form id="form"><fieldset class="model-picker"><legend>选择预测模型</legend><div class="model-options" role="group" aria-label="预测模型"><button type="button" class="model-option active" data-model="random_forest" aria-pressed="true" disabled><strong>随机森林</strong><small>捕捉非线性变化</small></button><button type="button" class="model-option" data-model="ridge" aria-pressed="false" disabled><strong>岭回归</strong><small>时间验证表现较好</small></button></div><p class="model-hint" id="modelHint" aria-live="polite">正在加载模型信息…</p></fieldset><div class="input-separator">环境来源</div><div class="tabs" role="group" aria-label="环境来源"><button type="button" class="active" data-mode="forecast" aria-pressed="true">天气预报 / 估计</button><button type="button" data-mode="measured" aria-pressed="false">确定环境</button></div><p class="hint" id="modeHint">请填写古筝所在室内的预估环境，室外天气预报可作为参考。</p>
+<div class="group-label">壹 · 温湿录</div><div class="env-fields"><div class="field"><label for="humidity">相对湿度</label><div class="input-wrap"><input id="humidity" type="number" min="0" max="100" step="0.1" placeholder="70" required><span class="unit">%</span></div></div><div class="field"><label for="temperature">温度</label><div class="input-wrap"><input id="temperature" type="number" min="-50" max="60" step="0.1" placeholder="26" required><span class="unit">℃</span></div></div></div>
+<div class="group-label">贰 · 环境流转</div><div class="pair"><div class="field"><label for="humidity_change">湿度变化</label><div class="input-wrap"><input id="humidity_change" type="number" min="-100" max="100" step="0.1" placeholder="+10" required><span class="unit">百分点</span></div><small>例如 60% → 70%，填 +10</small></div><div class="field"><label for="temperature_change">温度变化</label><div class="input-wrap"><input id="temperature_change" type="number" min="-60" max="60" step="0.1" placeholder="+1" required><span class="unit">℃</span></div><small>例如 25℃ → 26℃，填 +1</small></div></div>
+<p class="hint">正数表示升高，负数表示降低。变化量的参照时点需与历史采集口径一致。</p><div id="error" class="error" role="alert"></div><button class="primary" id="predict" type="submit" disabled><span>预测 21 根弦</span><span aria-hidden="true">▶</span></button><button class="text-button" id="example" type="button">填入一组示例数据</button></form>
+<div class="note">输入 4 项环境条件，模型自动遍历弦编号 1–21。无需填写古筝编号。</div></aside>
+<section id="results" class="results" aria-label="预测结果"><div class="overview"><div class="stat"><label>平均绝对偏差</label><strong id="mean">—</strong><small>21 根弦 · 原数据单位</small></div><div class="stat"><label>最大绝对偏差</label><strong id="max">—</strong><small>关注偏离零点的幅度</small></div><div class="stat"><label>偏差最大弦</label><strong id="peak">—</strong><small>预测绝对值最大的弦</small></div></div>
+<div class="card chart-card"><div class="chart-header"><div><h2>21 弦 · 跑音图谱</h2><p class="sub" id="resultCaption">填写左侧环境条件，开启一次预测</p></div><div class="legend"><i></i>正向偏差<i class="negative"></i>负向偏差</div></div><div class="chart" id="chart"><div class="empty"><span>∿</span>环境就绪，弦音可期。<p class="sub">预测结果将在这里呈现</p></div></div><div class="chart-footer"><span>横轴 · 弦编号　纵轴 · 预测偏差</span><span>零线表示无偏差 · 数值沿用训练数据单位</span></div><p id="warnings" class="warning" hidden></p></div>
+<div class="card detail"><div class="chart-header"><div><h2>弦音簿 · 二十一弦</h2><p class="sub">精确数值保留 2 位小数，下载可查看完整预测值。</p></div><button id="download" class="download" disabled>↓ 导出 CSV</button></div><div class="string-grid" id="strings"></div><details id="model-notes"><summary>关于模型与预测结果</summary><p id="modelDescription">正在读取所选模型的信息。</p><p id="modelEvaluation" class="model-evaluation"></p><p>两个模型均不使用古筝编号，使用相同的 5 个变量和全部历史数据重训。上面的留出评估使用实际环境，不能视为天气预报输入下的准确率；选择“确定环境”也不会消除模型误差。数值反映估计趋势，不是调弦操作量。</p><p>原数据没有明确标注偏差单位与正负方向定义，因此页面保留“正向 / 负向偏差”，不直接标注偏高、偏低或音分。页面不自动获取天气。</p><p><a href="/original.html" target="_blank" rel="noopener">查看保留的旧版网页 ↗</a></p></details></div><div class="sr-only" id="announce" aria-live="polite"></div></section></div></main>
+<footer><span>听弦小筑 / 山居调弦手记</span><span>以环境为线索，以实测校准判断。<br>预测供参考，实际音准请使用调音器确认。</span></footer>
+<script>
+
+const $ = id => document.getElementById(id);
+const ids = ['humidity', 'humidity_change', 'temperature', 'temperature_change'];
+let mode = 'forecast', selectedModel = 'random_forest', catalog = null;
+let latest = null, revision = 0, busy = false, sequence = 0, controller = null;
+
+document.querySelectorAll('[data-scene]').forEach(button => button.addEventListener('click', () => {
+  document.body.dataset.scene = button.dataset.scene;
+  document.querySelectorAll('[data-scene]').forEach(b => {
+    b.classList.toggle('active', b === button);
+    b.setAttribute('aria-pressed', String(b === button));
+  });
+}));
+function blankStrings() {
+  $('strings').innerHTML = Array.from({length: 21}, (_, i) => `<div class="string"><span class="number">${String(i+1).padStart(2,'0')} 弦</span><span class="value">—</span></div>`).join('');
+}
+blankStrings();
+function changed() {
+  revision++;
+  if (latest) {
+    $('resultCaption').textContent = `${latest.model_name} · 输入已修改，请重新预测`;
+    $('resultCaption').classList.add('stale');
+    $('download').disabled = true;
+  }
+}
+ids.forEach(id => $(id).addEventListener('input', changed));
+document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => {
+  mode = button.dataset.mode;
+  document.querySelectorAll('[data-mode]').forEach(b => {
+    b.classList.toggle('active', b === button);
+    b.setAttribute('aria-pressed', String(b === button));
+  });
+  $('modeHint').textContent = mode === 'forecast' ? '请填写古筝所在室内的预估环境，室外天气预报可作为参考。' : '请填写古筝所在位置的实测或确定环境，结果仍为模型估计。';
+  changed();
+}));
+function showModelInfo() {
+  const info = catalog[selectedModel];
+  $('modelBadge').textContent = `五变量 · ${info.name}`;
+  $('modelHint').textContent = selectedModel === 'ridge'
+    ? '此前时间验证中表现较好。已有结果时，切换模型会自动重新预测。'
+    : '沿用随机森林配置。已有结果时，切换模型会自动重新预测。';
+  $('modelDescription').textContent = selectedModel === 'ridge'
+    ? `岭回归 · 标准化 + Ridge · alpha=${info.params.alpha.toFixed(2)}。使用 ${info.training_rows} 条历史记录训练。`
+    : `随机森林 · ${info.params.n_estimators} 棵树 · 最大深度 ${info.params.max_depth}。使用 ${info.training_rows} 条历史记录训练。`;
+  $('modelEvaluation').textContent = `${info.name}最后日期留出评估：MAE ${info.evaluation.mae.toFixed(2)}，R² ${info.evaluation.r2.toFixed(4)}。评估与当前全历史重训模型有所区别。`;
+  document.querySelectorAll('[data-model]').forEach(b => {
+    const active = b.dataset.model === selectedModel;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', String(active));
+  });
+}
+function resetResult() {
+  latest = null;
+  $('mean').textContent = $('max').textContent = $('peak').textContent = '—';
+  $('download').disabled = true;
+  $('warnings').hidden = true;
+  $('resultCaption').classList.remove('stale');
+  $('resultCaption').textContent = `已选择${catalog[selectedModel].name} · 等待预测`;
+  $('chart').innerHTML = '<div class="empty"><span>∿</span>环境就绪，弦音可期。<p class="sub">预测结果将在这里呈现</p></div>';
+  blankStrings();
+}
+document.querySelectorAll('[data-model]').forEach(button => button.addEventListener('click', () => {
+  if (!catalog || button.dataset.model === selectedModel) return;
+  const shouldPredict = (latest !== null || busy) && $('form').checkValidity();
+  controller?.abort();
+  sequence++;
+  busy = false;
+  selectedModel = button.dataset.model;
+  changed();
+  showModelInfo();
+  resetResult();
+  $('error').textContent = '';
+  $('predict').disabled = false;
+  $('predict').firstElementChild.textContent = '预测 21 根弦';
+  if (shouldPredict) runPrediction();
+}));
+$('example').onclick = () => {
+  Object.entries({humidity:70, humidity_change:10, temperature:26, temperature_change:1}).forEach(([k,v]) => $(k).value = v);
+  changed();
+  $('humidity').focus();
+};
+function fmt(n){return (n>0?'+':'')+n.toFixed(2);}
+function draw(rows){const W=Math.max(320,$('chart').clientWidth),H=280,L=40,R=18,T=20,B=36;let extent=Math.max(1,...rows.map(r=>Math.abs(r.deviation)))*1.2;const y=v=>T+(extent-v)/(extent*2)*(H-T-B),dx=(W-L-R)/21,bw=Math.min(20,dx*.58);let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="21根弦的预测偏差柱状图，具体数值见下方明细">`;for(let i=-2;i<=2;i++){const value=extent*i/2,yy=y(value);svg+=`<line x1="${L}" y1="${yy}" x2="${W-R}" y2="${yy}" stroke="${i===0?'#a89e75':'#d9cba4'}" ${i===0?'':'stroke-dasharray="3 5"'}/><text x="${L-9}" y="${yy+4}" text-anchor="end" fill="#887b53" font-size="10">${value.toFixed(1)}</text>`;}
+rows.forEach((r,i)=>{const x=L+dx*(i+.5),yy=y(r.deviation),zero=y(0),color=r.deviation>=0?'#5a7e57':'#b47a50';svg+=`<rect x="${x-bw/2}" y="${Math.min(yy,zero)}" width="${bw}" height="${Math.max(1,Math.abs(yy-zero))}" rx="0" fill="${color}"><title>第 ${r.string} 弦：${fmt(r.deviation)}</title></rect><text x="${x}" y="${H-13}" text-anchor="middle" fill="#82744e" font-size="10">${r.string}</text>`;});$('chart').innerHTML=svg+'</svg>';}
+
+function renderResult(data) {
+  latest = data;
+  $('mean').textContent = data.summary.mean_absolute.toFixed(2);
+  $('max').textContent = data.summary.max_absolute.toFixed(2);
+  $('peak').textContent = `第 ${data.summary.most_affected} 弦`;
+  $('resultCaption').classList.remove('stale');
+  $('resultCaption').textContent = `${data.model_name} · ${data.mode === 'forecast' ? '预报 / 估计' : '确定环境'} · ${data.inputs.humidity}% RH / ${data.inputs.temperature}℃ · ${new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})} 更新`;
+  draw(data.predictions);
+  $('strings').innerHTML = data.predictions.map(r => `<div class="string ${r.string === data.summary.most_affected ? 'peak' : ''}"><span class="number">${String(r.string).padStart(2,'0')} 弦</span><span class="value" style="color:${r.deviation >= 0 ? '#386c5b' : '#ad774d'}">${fmt(r.deviation)}</span></div>`).join('');
+  const warnings = [...(data.mode === 'forecast' ? ['基于环境估计的预测；实际预报误差尚未验证。'] : []), ...data.warnings];
+  $('warnings').hidden = !warnings.length;
+  $('warnings').textContent = warnings.join(' ');
+  $('download').disabled = false;
+  $('announce').textContent = `${data.model_name}预测完成，21根弦，平均绝对偏差 ${data.summary.mean_absolute.toFixed(2)}`;
+}
+async function runPrediction() {
+  if (!catalog || !$('form').reportValidity()) return;
+  controller?.abort();
+  const requestId = ++sequence;
+  const snapshot = revision;
+  const payload = {mode, model: selectedModel};
+  ids.forEach(id => payload[id] = Number($(id).value));
+  const requestController = new AbortController();
+  controller = requestController;
+  busy = true;
+  $('error').textContent = '';
+  $('predict').disabled = true;
+  $('predict').firstElementChild.textContent = '正在倾听环境…';
+  $('download').disabled = true;
+  $('resultCaption').textContent = `${catalog[payload.model].name} · 正在预测…`;
+  $('resultCaption').classList.add('stale');
+  const timer = setTimeout(() => requestController.abort(), 20000);
+  try {
+    const response = await fetch('/api/predict', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), signal:requestController.signal});
+    const data = await response.json();
+    if (requestId !== sequence) return;
+    if (!response.ok) throw Error(data.error || '预测失败');
+    if (snapshot !== revision) {
+      $('error').textContent = '环境条件已改变，请再次预测。';
+      $('resultCaption').textContent = latest ? `${latest.model_name} · 保留上次结果，输入已修改` : '输入已修改 · 请重新预测';
+      return;
+    }
+    if (data.model !== payload.model) throw Error('服务返回的模型与所选模型不一致，请重启服务后重试。');
+    renderResult(data);
+  } catch (err) {
+    if (requestId !== sequence) return;
+    $('error').textContent = err.name === 'AbortError' ? '预测超时，请重试。' : (err.message === 'Failed to fetch' ? '无法连接本地服务，请确认服务正在运行。' : err.message);
+    $('resultCaption').textContent = latest ? `${latest.model_name} · 预测失败，下方保留上一次结果` : `${catalog[selectedModel].name} · 预测未完成`;
+    $('resultCaption').classList.add('stale');
+  } finally {
+    clearTimeout(timer);
+    if (requestId === sequence) {
+      busy = false;
+      controller = null;
+      $('predict').disabled = false;
+      $('predict').firstElementChild.textContent = '预测 21 根弦';
+    }
+  }
+}
+$('form').onsubmit = e => { e.preventDefault(); if (!busy) runPrediction(); };
+window.addEventListener('resize', () => { if (latest) draw(latest.predictions); });
+$('download').onclick = () => {
+  if (!latest || $('download').disabled) return;
+  const v = latest.inputs;
+  const lines = ['弦编号,预测偏差（原数据单位）,环境来源,湿度（%）,湿度变化（百分点）,温度（℃）,温度变化（℃）,模型,模型标识'];
+  latest.predictions.forEach(r => lines.push([r.string,r.deviation,latest.mode === 'forecast' ? '预报或估计' : '确定环境',v.humidity,v.humidity_change,v.temperature,v.temperature_change,latest.model_name,latest.model].join(',')));
+  const url = URL.createObjectURL(new Blob(['\ufeff' + lines.join('\r\n')], {type:'text/csv;charset=utf-8'}));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `听弦_${latest.model_name}_21弦预测.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+(async () => {
+  try {
+    const response = await fetch('/api/models', {signal: AbortSignal.timeout(10000)});
+    if (!response.ok) throw Error('模型服务未就绪，请重启服务并刷新页面。');
+    const data = await response.json();
+    if (!data.models?.ridge || !data.models?.random_forest) throw Error('模型列表不完整，请重启服务。');
+    catalog = data.models;
+    showModelInfo();
+    document.querySelectorAll('[data-model]').forEach(b => b.disabled = false);
+    $('predict').disabled = false;
+  } catch (err) {
+    $('error').textContent = err.message;
+    $('modelHint').textContent = '未能加载模型，刷新页面可重试。';
+  }
+})();
+</script></body></html>
